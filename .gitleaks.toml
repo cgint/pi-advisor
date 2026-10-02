@@ -1,0 +1,4 @@
+title = "Gitleaks configuration for pi-advisor"
+
+# No allowlist entries; default rule set applies.
+# Add [[allowlists]] entries here for known false positives.
