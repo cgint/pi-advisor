@@ -59,10 +59,12 @@ When `PI_ADVISOR_MODELS` is unset, the built-in default chain is used.
 
 The core idea — sending the live session transcript to a stronger, read-only
 "advisor" model for strategic guidance — is an established pattern, not an
-original of this project. We believe the initial implementation was inspired
-by, or built on top of, earlier public work in this space, but we can no
-longer recall or verify the specific source. Rather than guess, here is the
-prior art we could identify:
+original of this project. The initial implementation of this extension
+(first `advisor.ts`, May 2026) was **adapted from an earlier public Pi
+advisor implementation**; we can no longer recall or verify which repository
+it came from, and the code has since been substantially reworked. Until the
+source can be identified, the closest public projects we could find are
+listed below:
 
 - The closest contemporaneous Pi-ecosystem projects (released weeks before
   the initial implementation of this package):
