@@ -55,6 +55,28 @@ When `PI_ADVISOR_MODELS` is unset, the built-in default chain is used.
 - Redacts common API keys, bearer tokens, and private keys by default.
 - Counts fallback-chain attempts as one advisor call.
 
+## Related work and attribution
+
+The core idea — sending the live session transcript to a stronger, read-only
+"advisor" model for strategic guidance — is an established pattern, not an
+original of this project. We believe the initial implementation was inspired
+by, or built on top of, earlier public work in this space, but we can no
+longer recall or verify the specific source. Rather than guess, here is the
+prior art we could identify:
+
+- The closest contemporaneous Pi-ecosystem projects (released weeks before
+  the initial implementation of this package):
+  - [npm `pi-advisor`](https://www.npmjs.com/package/pi-advisor) ("Claude-style advisor tool for strategic guidance", created 2026-04)
+  - [juicesharp/rpiv-advisor](https://github.com/juicesharp/rpiv-advisor) (2026-04, advisor tool + `/advisor` command extracted from rpiv-pi)
+- Broader pattern prior art:
+  - Anthropic's native Claude Code [`/advisor` tool](https://code.claude.com/docs/en/advisor) and ["The advisor strategy"](https://claude.com/blog/the-advisor-strategy)
+  - [Amp Oracle](https://ampcode.com/news/oracle) (read-only second-model consultation, 2025)
+  - [Aider architect mode](https://aider.chat/2024/09/26/architect.html) (strong model plans, cheap model edits, 2024)
+
+If you are the original author of the work this was based on — or know who
+it is — please [open an issue](https://github.com/cgint/pi-advisor/issues)
+and we will add proper attribution here.
+
 ## Development
 
 ```bash
