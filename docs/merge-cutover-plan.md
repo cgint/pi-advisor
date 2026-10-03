@@ -52,7 +52,11 @@ Marcus verified `precommit` was red in two ways; lead independently confirmed an
 - `git init -b main`, `git add -A`, commit: `Merge live standalone advisor behavior into package source; restore exports and /compat import`.
 - **No push:** Marcus verified `git ls-remote https://github.com/cgint/pi-advisor` → 404 (repo does not exist). Worker ends by handing the lead the exact `git remote add origin … && git push -u origin main` commands; upstream repo creation is a **user action**.
 
-## Phase 4 — Live cutover (NOT delegated; lead + user approval only)
+## Phase 4 — Live cutover — DONE (2026-10-02, executed by user, verified by lead)
+
+User deleted all loose `advi*.ts` files (`~/.pi/agent`, `~/.pi/profiles/minimal`, `~/.pi/profiles/partner` — source of truth lives in `~/.local/bin/data-dir-agents/manual/pi-agent/extensions/`) and ran `pi install https://github.com/cgint/pi-advisor` in all three scopes (pim/pi/pipa). No coexistence window needed. Lead-verified: all three `settings.json` carry `"https://github.com/cgint/pi-advisor"`; all three clones at `5733316`; no loose advisor files remain; install-time npm audit clean (0 vulns).
+
+Residual (by design, user decision): runtime verification = restart Pi in each scope, `/advisor-status` shows 3.6 default chain, one live advisor call. Expected: 8081-twins hop fails (not in models.json), falls through to google/gemini-3.6-flash.
 
 Pre-check (before the window): confirm `google/gemini-3.6-flash` is authed in the active profile (`pi auth check --provider google` or models registry). Note: `8081-twins` is **not** in the profile's models.json (Marcus verified: providers are llamacpp-twins, lms-twins, cpp-twins, llamacpp-twins-8085/8086) — the built-in chain's first hop will fail and fall through to google. Pass criterion if only the local hop is configured: "chain degrades gracefully with correct attempt lines".
 
