@@ -12,7 +12,7 @@ const ORIGINAL_ENV = { ...process.env };
 function baseConfig(): AdvisorConfig {
   return {
     provider: "google",
-    model: "gemini-3.5-flash",
+    model: "gemini-3.8-flash",
     requireAllow: false,
     allowed: true,
     redact: true,
@@ -29,9 +29,9 @@ afterEach(() => {
 
 describe("parseAdvisorEntry", () => {
   it("parses provider, model, and reasoning effort", () => {
-    expect(parseAdvisorEntry("google/gemini-3.5-flash:medium", "off")).toEqual({
+    expect(parseAdvisorEntry("google/gemini-3.8-flash:medium", "off")).toEqual({
       provider: "google",
-      model: "gemini-3.5-flash",
+      model: "gemini-3.8-flash",
       reasoningEffort: "medium",
     });
   });
@@ -63,18 +63,18 @@ describe("resolveAdvisorChain", () => {
       },
       {
         provider: "google",
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         reasoningEffort: "medium",
       },
     ]);
   });
 
   it("uses the configured chain and fills missing effort from config", () => {
-    process.env.PI_ADVISOR_MODELS = "local/qwen:off#google/gemini-3.5-flash";
+    process.env.PI_ADVISOR_MODELS = "local/qwen:off#google/gemini-3.8-flash";
 
     expect(resolveAdvisorChain(baseConfig())).toEqual([
       { provider: "local", model: "qwen", reasoningEffort: "off" },
-      { provider: "google", model: "gemini-3.5-flash", reasoningEffort: "medium" },
+      { provider: "google", model: "gemini-3.8-flash", reasoningEffort: "medium" },
     ]);
   });
 
@@ -82,7 +82,7 @@ describe("resolveAdvisorChain", () => {
     process.env.PI_ADVISOR_MODELS = "bad#also-bad";
 
     expect(resolveAdvisorChain(baseConfig())).toEqual([
-      { provider: "google", model: "gemini-3.5-flash", reasoningEffort: "medium" },
+      { provider: "google", model: "gemini-3.8-flash", reasoningEffort: "medium" },
     ]);
   });
 });

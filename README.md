@@ -37,7 +37,7 @@ Environment is read lazily; edit variables and run `/reload` to apply.
 PI_ADVISOR_MODE=off                         # disable extension
 PI_ADVISOR_MODELS="provider/model:effort#provider2/model2:effort2"
 PI_ADVISOR_PROVIDER=google                  # legacy single-model fallback
-PI_ADVISOR_MODEL=gemini-3.6-flash
+PI_ADVISOR_MODEL=gemini-3.8-flash
 PI_ADVISOR_REQUIRE_ALLOW=1                  # require explicit privacy allow
 PI_ADVISOR_ALLOWED=1
 PI_ADVISOR_MAX_PER_TURN=10
